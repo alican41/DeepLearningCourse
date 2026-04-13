@@ -12,3 +12,52 @@ def hello_world():
     print("Hello, World!")
 
 hello_world()
+
+class Person:
+
+    def __init__(self, name, age):
+        self.__name = name
+        self.__age = age
+
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, name):
+        if not isinstance(name, str):
+            raise ValueError("Name must be a string")
+        if len(name) < 2:
+            raise ValueError("Name must be at least 2 characters long")
+        self.__name = name
+
+    @name.deleter
+    def name(self):
+        self.__name = None
+
+    @property
+    def age(self):
+        return self.__age
+    
+    @age.setter
+    def age(self, age):
+        if not isinstance(age, int):
+            raise ValueError("Age must be an integer")
+        if age < 0:
+            raise ValueError("Age cannot be negative")
+        self.__age = age
+
+    @age.deleter
+    def age(self):
+        self.__age = None
+
+ali = Person("Ali", 30)
+print(ali.name)
+ali.name = "Ali Can"
+del ali.name
+print(ali.name)
+ali.age = 50
+print(ali.age)
+ali.age = 25
+print(ali.age)
+    
