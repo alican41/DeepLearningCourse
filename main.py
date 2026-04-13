@@ -85,3 +85,30 @@ print(MathOperations.add(10, 5))
 print(MathOperations.subtract(10, 5))
 print(MathOperations.multiply(10, 5))
 print(MathOperations.divide(10, 5))
+
+class Pizza:
+
+    total_pizzas = 0
+
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+        Pizza.total_pizzas += 1
+
+    @classmethod
+    def margherita(cls):
+        return cls(["mozzarella", "tomato", "basil"])
+    
+    @classmethod
+    def pepperoni(cls):
+        return cls(["mozzarella", "tomato", "pepperoni"])
+    
+    @classmethod
+    def get_total_pizzas(cls):
+        return cls.total_pizzas
+
+pizza1 = Pizza.margherita()
+print(pizza1.ingredients)
+pizza2 = Pizza.pepperoni()
+print(pizza2.ingredients)
+
+print(Pizza.get_total_pizzas())
