@@ -112,3 +112,36 @@ pizza2 = Pizza.pepperoni()
 print(pizza2.ingredients)
 
 print(Pizza.get_total_pizzas())
+
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+
+    def __init__(self, name):
+        self.name = name
+
+    @abstractmethod
+    def make_sound(self):
+        pass
+
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def sleep(self):
+        pass
+
+class Dog(Animal):
+
+    def make_sound(self):
+        print(f"{self.name} says: Woof!")
+
+    def move(self):
+        print(f"{self.name} is running.")
+
+    def sleep(self):
+        print(f"{self.name} is sleeping.")
+
+barley = Dog("Barley")
+barley.move()
