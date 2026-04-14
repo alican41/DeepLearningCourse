@@ -215,3 +215,32 @@ class SecretAlgorithm:
 
     def execute(self):
         print("Executing secret algorithm")
+
+from typing import override
+
+class Shape:
+
+    def area(self) -> float:
+        return 0.0
+    
+    def perimeter(self) -> float:
+        return 0.0
+    
+
+class Rectangle(Shape):
+
+    def __init__(self, width: float, height: float):
+        self.width = width
+        self.height = height
+
+    @override
+    def area(self) -> float:
+        return self.width * self.height
+    
+    @override
+    def perimeter(self) -> float:
+        return 2 * (self.width + self.height)
+
+rect = Rectangle(5, 3)
+print(f"Area: {rect.area()}")
+print(f"Perimeter: {rect.perimeter()}")
