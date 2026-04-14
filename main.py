@@ -182,3 +182,36 @@ print(calc.add(10, 5))
 
 result = calc.process("ali")
 print(result)
+
+from typing import final
+
+class BaseGame:
+
+    def start(self):
+        print("Game started")
+
+    def calculate_score(self, points: int) -> int:
+        bonus = 100
+        return points + bonus
+    
+    def end(self):
+        print("Game ended")
+
+class MyGame(BaseGame):
+
+    def start(self):
+        print("MyGame started")
+
+    @final
+    def calculate_score(self, points: int) -> int:
+        bonus = 200
+        return points + bonus
+
+    def end(self):
+        print("MyGame ended")
+
+@final
+class SecretAlgorithm:
+
+    def execute(self):
+        print("Executing secret algorithm")
