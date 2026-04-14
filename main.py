@@ -145,3 +145,40 @@ class Dog(Animal):
 
 barley = Dog("Barley")
 barley.move()
+
+from typing import overload, Union
+
+class Calculator:
+
+    @overload
+    def add(self, a: int, b: int) -> int: ...  
+    
+    @overload
+    def add(self, a: int, b: int, c: int) -> int: ...
+
+    def add(self, a: int, b: int, c: int | None = None) -> int:
+        if c is not None:
+            return a + b + c
+        return a + b
+    
+    @overload
+    def process(self, value: str) -> str: ...
+
+    @overload
+    def process(self, value: int) -> int: ...
+
+    def process(self, value: Union[str, int]) -> Union[str, int]:
+        if isinstance(value, str):
+            return value.upper()
+        elif isinstance(value, int):
+            return value * 2
+        else:
+            raise ValueError("Unsupported type")
+
+
+
+calc = Calculator()
+print(calc.add(10, 5))
+
+result = calc.process("ali")
+print(result)
